@@ -1,15 +1,16 @@
-pipeline{
+pipeline {
     agent any
-    
-    tools {
-        jdk 'Java17'}
-        maven 'Maven3'
-stages{
-        stage("Cleanup Workspace"){
-            steps {
-                cleanWs()
-            }
 
+    tools {
+        jdk 'Jdk17'
+        maven 'Maven3'
+    }
+
+    stages {
+        stage("Build") {
+            steps {
+                sh 'mvn clean install'
+            }
         }
     }
 }
